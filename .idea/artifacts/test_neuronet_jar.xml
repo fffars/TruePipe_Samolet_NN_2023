@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact name="test_neuronet:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/test_neuronet_jar</output-path>
+    <root id="root">
+      <element id="archive" name="test_neuronet.jar">
+        <element id="module-output" name="test_neuronet" />
+      </element>
+      <element id="library" level="project" name="opencv-454" />
+      <element id="file-copy" path="$PROJECT_DIR$/OpenCV/java/opencv-454.jar" />
+      <element id="dir-copy" path="$PROJECT_DIR$/OpenCV/java/x64" />
+      <element id="file-copy" path="$PROJECT_DIR$/1.jpeg" />
+      <element id="file-copy" path="$PROJECT_DIR$/1628905019_37-p-skachat-foto-milikh-kotikov-41.jpg" />
+      <element id="file-copy" path="$PROJECT_DIR$/1645056530_10-fikiwiki-com-p-kartinki-vlyublennie-kotiki-11.jpg" />
+      <element id="file-copy" path="$PROJECT_DIR$/haarcascade_frontalcatface.xml" />
+      <element id="file-copy" path="$PROJECT_DIR$/haarcascade_frontalcatface_extended.xml" />
+      <element id="file-copy" path="$PROJECT_DIR$/kogo-zavesti-kota-ili-koshku.jpg" />
+    </root>
+  </artifact>
+</component>
