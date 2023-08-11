@@ -1,7 +1,6 @@
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
-import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.imgcodecs.Imgcodecs;
 
@@ -18,17 +17,9 @@ public class Main {
         }
 
         Mat inputFrame = Imgcodecs.imread(args[0]);
-        Mat mRgba=new Mat();
-        Mat mGrey=new Mat();
         MatOfRect faces = new MatOfRect();
 
-        inputFrame.copyTo(mRgba);
-        inputFrame.copyTo(mGrey);
-
-        Imgproc.cvtColor( mRgba, mGrey, Imgproc.COLOR_BGR2GRAY);
-        Imgproc.equalizeHist( mGrey, mGrey );
-
-        face_cascade.detectMultiScale(mGrey, faces);
+        face_cascade.detectMultiScale(inputFrame, faces);
         int detectedFaces = faces.toArray().length;
 
         System.out.println("Обнаружено " + detectedFaces + " котов");
@@ -42,10 +33,10 @@ public class Main {
             System.out.println("Загрузили \"haarcascade_frontalcatface_extended\"");
         }
 
-        face_cascade.detectMultiScale(mGrey, faces);
+        face_cascade.detectMultiScale(inputFrame, faces);
         detectedFaces = faces.toArray().length;
 
         System.out.println("Обнаружено " + detectedFaces + " котов");
-        System.exit(0);
+//        System.exit(0);
     }
 }
