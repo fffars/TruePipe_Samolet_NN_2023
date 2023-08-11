@@ -1,42 +1,102 @@
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfRect;
+import org.opencv.core.*;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.imgcodecs.Imgcodecs;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.io.File;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
+        // вывести в окне картинку
+        // нарисовать рамки в области распознавания
+        // запуск по ключу
+        SwingUtilities.invokeLater(() -> {
+            try {
+                BufferedImage img = ImageIO.read(new File(args[0]));
+//                    BufferedImage resizedImage = resizeImage(img, 640, 480);
+                Graphics2D g2d = img.createGraphics();
+                g2d.setColor(Color.RED);
+                g2d.setStroke(new BasicStroke(5));
+                CatImageDetector detecor = new CatImageDetector();
+                detecor.work_with_image(img);
+                Rect[] array = detecor.faces.toArray();
+                for (Rect rect : array) {
+                    g2d.drawRect(rect.x, rect.y, rect.width, rect.height);
+                }
+                g2d.setColor(Color.GREEN);
+                g2d.setStroke(new BasicStroke(5));
+                Rect[] array2 = detecor.faces2.toArray();
+                for (Rect rect : array2) {
+                    g2d.drawRect(rect.x, rect.y, rect.width, rect.height);
+                }
+                g2d.dispose();
+                ImageIcon icon = new ImageIcon(img);
+                JFrame window = new JFrame("Результат");
+                window.setLocationByPlatform(true);
+                window.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
+                window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                JLabel lbl = new JLabel();
+                lbl.setIcon(icon);
+                window.add(lbl);
+                window.getContentPane().add(lbl, BorderLayout.CENTER);
+                window.pack();
+                window.setVisible(true);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+//    static BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
+//        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+//        Graphics2D graphics2D = resizedImage.createGraphics();
+//        graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+//        graphics2D.dispose();
+//        return resizedImage;
+//    }
+}
+
+class CatImageDetector {
+
+    MatOfRect faces = new MatOfRect();
+    MatOfRect faces2 = new MatOfRect();
+
+    public int[] work_with_image(BufferedImage img) {
+        int[] rez = {0, 0};
         CascadeClassifier face_cascade = new CascadeClassifier("haarcascade_frontalcatface.xml");
-        if(face_cascade.empty()){
+        if (face_cascade.empty()) {
             System.out.println("Ошибка загрузки");
-            return;
-        }
-        else{
+            return rez;
+        } else {
             System.out.println("Загрузили \"haarcascade_frontalcatface\"");
         }
 
-        Mat inputFrame = Imgcodecs.imread(args[0]);
-        MatOfRect faces = new MatOfRect();
+        byte[] pixels = ((DataBufferByte) img.getRaster().getDataBuffer()).getData();
+        Mat inputFrame = new Mat(img.getHeight(), img.getWidth(), CvType.CV_8UC3);
+        inputFrame.put(0, 0, pixels);
 
         face_cascade.detectMultiScale(inputFrame, faces);
-        int detectedFaces = faces.toArray().length;
+        rez[0] = faces.toArray().length;
 
-        System.out.println("Обнаружено " + detectedFaces + " котов");
+        System.out.println("Обнаружено " + rez[0] + " котов");
 
         face_cascade = new CascadeClassifier("haarcascade_frontalcatface_extended.xml");
-        if(face_cascade.empty()){
+        if (face_cascade.empty()) {
             System.out.println("Ошибка загрузки");
-            return;
-        }
-        else{
+            return rez;
+        } else {
             System.out.println("Загрузили \"haarcascade_frontalcatface_extended\"");
         }
 
-        face_cascade.detectMultiScale(inputFrame, faces);
-        detectedFaces = faces.toArray().length;
+        face_cascade.detectMultiScale(inputFrame, faces2);
+        rez[1] = faces.toArray().length;
 
-        System.out.println("Обнаружено " + detectedFaces + " котов");
-//        System.exit(0);
+        System.out.println("Обнаружено " + rez[1] + " котов");
+        return rez;
     }
 }
