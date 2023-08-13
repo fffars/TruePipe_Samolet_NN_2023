@@ -115,7 +115,7 @@ class CatImageDetector {
         }
 
         face_cascade.detectMultiScale(inputFrame, faces2);
-        rez[1] = faces.toArray().length;
+        rez[1] = faces2.toArray().length;
 
         System.out.println("Обнаружено " + rez[1] + " котов");
         return rez;
