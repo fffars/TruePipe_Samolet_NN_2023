@@ -17,8 +17,8 @@
       <element id="library" level="project" name="Maven: org.tensorflow:tensorflow-core-api:linux-x86_64:0.5.0" />
       <element id="library" level="project" name="Maven: org.tensorflow:tensorflow-core-api:macosx-x86_64:0.5.0" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:macosx-x86_64:1.5.8" />
-      <element id="file-copy" path="$PROJECT_DIR$/OpenCV/java/opencv-454.jar" />
       <element id="dir-copy" path="$PROJECT_DIR$/OpenCV/java/x64" />
+      <element id="file-copy" path="$PROJECT_DIR$/OpenCV/java/opencv-480.jar" />
     </root>
   </artifact>
 </component>

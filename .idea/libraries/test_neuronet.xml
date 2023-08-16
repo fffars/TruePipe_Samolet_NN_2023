@@ -2,7 +2,7 @@
   <library name="test_neuronet">
     <CLASSES>
       <root url="file://$PROJECT_DIR$" />
-      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-454.jar!/" />
+      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-480.jar!/" />
     </CLASSES>
     <JAVADOC />
     <NATIVE>
@@ -10,8 +10,8 @@
     </NATIVE>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/src" />
-      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-454.jar!/" />
-      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-454.jar!/" />
+      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-480.jar!/" />
+      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-480.jar!/" />
     </SOURCES>
   </library>
 </component>
