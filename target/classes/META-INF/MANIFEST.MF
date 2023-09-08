@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Main-Class: Main
-Class-Path: protobuf-java-3.19.4.jar ndarray-0.4.0.jar javacpp-1.5.8.jar
-  javacpp-1.5.8-linux-x86_64.jar javacpp-1.5.8-windows-x86_64.jar tensor
- flow-core-api-0.5.0-windows-x86_64.jar tensorflow-core-api-0.5.0.jar te
- nsorflow-core-platform-0.5.0.jar tensorflow-core-api-0.5.0-linux-x86_64
- .jar tensorflow-core-api-0.5.0-macosx-x86_64.jar javacpp-1.5.8-macosx-x
- 86_64.jar opencv-454.jar
+Class-Path: javacpp-1.5.8-windows-x86_64.jar tensorflow-core-api-0.5.0-w
+ indows-x86_64.jar tensorflow-core-platform-0.5.0.jar ndarray-0.4.0.jar 
+ opencv-480.jar protobuf-java-3.19.4.jar javacpp-1.5.8.jar javacpp-1.5.8
+ -macosx-x86_64.jar tensorflow-core-api-0.5.0.jar tensorflow-core-api-0.
+ 5.0-linux-x86_64.jar javacpp-1.5.8-linux-x86_64.jar tensorflow-core-api
+ -0.5.0-macosx-x86_64.jar
 
