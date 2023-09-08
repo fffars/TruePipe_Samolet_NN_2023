@@ -189,10 +189,10 @@ class CatImageDetector {
 
         int[] rez = {0, 0};
 
-        mat = matify(img);
+//        mat = matify(img);
 //        network = Dnn.readNetFromONNX(path_to_model);
         network = Dnn.readNet(path_to_model);
-        image = Dnn.blobFromImage(mat, 1, new Size(640, 640));
+//        image = Dnn.blobFromImage(mat, 1, new Size(640, 640));
         // доделать нейросеть
         loadPipeline();
         System.out.println("Обнаружено " + outputs.size() + " котов");
@@ -268,11 +268,14 @@ class CatImageDetector {
 
     private void getBoxDimensions() {
         for (Mat output : outputs) {
+            System.out.println(output.height());
             for (int i = 0; i < output.height(); i++) {
                 Mat row = output.row(i);
                 MatOfFloat temp = new MatOfFloat(row);
                 List<Float> detect = temp.toList();
                 List<Float> score = detect.subList(5, 85);
+                System.out.println( output.height());
+                System.out.println(detect.size());
                 System.out.println( score.size());
                 int class_id = argmax(score);
                 float conf = score.get(class_id);
@@ -305,6 +308,7 @@ class CatImageDetector {
         int font = Imgproc.FONT_HERSHEY_PLAIN;
         Dnn.NMSBoxes(mat, confidence, (float) (0.4), (float) (0.4), indices);
         List indices_list = indices.toList();
+        System.out.println(indices_list.size());
         for (int i = 0; i < boxes.size(); i++) {
             if (indices_list.contains(i)) {
 //                if (save) {
@@ -335,7 +339,7 @@ class CatImageDetector {
             loadImage();
             detectObject();
             getBoxDimensions();
-//            drawLabels();
+            drawLabels();
         } catch (Exception e) {
             errors = true;
         }
@@ -355,7 +359,7 @@ class CatImageDetector {
     }
 
     private void loadImage() {
-//        Mat img = Imgcodecs.imread(input_path);
+        Mat mat = Imgcodecs.imread(input_path);
         Mat resizedImage = new Mat();
         Imgproc.resize(mat, resizedImage, size, 0.9, 0.9);
         height = resizedImage.height();
