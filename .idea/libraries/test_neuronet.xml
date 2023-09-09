@@ -2,16 +2,12 @@
   <library name="test_neuronet">
     <CLASSES>
       <root url="file://$PROJECT_DIR$" />
-      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-480.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libsvm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/weka.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <NATIVE>
-      <root url="file://$PROJECT_DIR$/OpenCV/java/x64" />
-    </NATIVE>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/src" />
-      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-480.jar!/" />
-      <root url="jar://$PROJECT_DIR$/OpenCV/java/opencv-480.jar!/" />
     </SOURCES>
   </library>
 </component>
