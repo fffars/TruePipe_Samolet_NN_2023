@@ -1,4 +1,4 @@
-<h1 align="center">Добро пожаловать в репозиторий команды <a href="https://github.com/fffars/TruePipe_Samolet_NN_2023" target="_blank">TruePipe</a> 
+<h1 align="center">Добро пожаловать<br>в репозиторий команды <a href="https://github.com/fffars/TruePipe_Samolet_NN_2023" target="_blank">TruePipe</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">Наш кейс: модель склонности клиента к приобретению машиноместа</h3>
 
